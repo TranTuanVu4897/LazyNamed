@@ -1,0 +1,45 @@
+﻿<Window x:Class="LazyNamed.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LazyNamed"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Pretty Bugging Change Name project" Height="450" Width="800">
+    <Grid>
+        <Grid>
+            <Label Content="Path:" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="75"/>
+            <TextBox x:Name="tbxPath" HorizontalAlignment="Left" Height="23" Margin="10,63,0,0" VerticalAlignment="Top" Width="385" LostFocus="tbxPath_LostFocus"/>
+            <ListView x:Name="lvResult" ItemsSource="{Binding fileEntries}" HorizontalAlignment="Left" Height="318" Margin="10,91,0,0" VerticalAlignment="Top" Width="465" Grid.ColumnSpan="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Update">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Width="100" IsChecked="{Binding Path=IsUpdateName}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
+                        <GridViewColumn Header="New Name" DisplayMemberBinding="{Binding Path=NewName}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Content="..." HorizontalAlignment="Left" Margin="400,63,0,0" VerticalAlignment="Top" Width="45" Height="23" RenderTransformOrigin="1.111,0.522"/>
+            <TextBox x:Name="tbxFind" HorizontalAlignment="Left" Height="23" Margin="480,91,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="302"/>
+            <TextBox x:Name="tbxReplace" HorizontalAlignment="Left" Height="23" Margin="480,150,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="302"/>
+            <Label Content="Find:" HorizontalAlignment="Left" Margin="480,60,0,0" VerticalAlignment="Top"/>
+            <Label Content="Replace:" HorizontalAlignment="Left" Margin="480,119,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="btnReplace" Content="Replace" HorizontalAlignment="Left" Margin="480,310,0,0" VerticalAlignment="Top" Width="75" Click="btnReplace_Click"/>
+            <CheckBox x:Name="cbxUseRegex" Content="Use regex" HorizontalAlignment="Left" Margin="480,258,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <CheckBox x:Name="cbxCaseSensitive" Content="Case Sensitive" HorizontalAlignment="Left" Margin="480,278,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <Button x:Name="btnAccept" Content="Accept" HorizontalAlignment="Left" Margin="560,310,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnAccept_Click"/>
+            <Label x:Name="lblInfo" Content="Result of this replacement" HorizontalAlignment="Left" Margin="560,227,0,0" VerticalAlignment="Top" Background="White" Visibility="Hidden"/>
+            <CheckBox Content="" HorizontalAlignment="Left" Margin="480,235,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="480,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302"/>
+            <Label Content="Specific extension:" HorizontalAlignment="Left" Margin="480,176,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Menu HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="792"/>
+    </Grid>
+</Window>

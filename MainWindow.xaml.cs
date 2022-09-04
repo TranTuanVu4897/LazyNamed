@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,7 +22,6 @@ namespace LazyNamed
             lvResult.ItemsSource = fileEntries;
         }
 
-
         private void btnReplace_Click(object sender, RoutedEventArgs e)
         {
             RegexOptions option = cbxCaseSensitive.IsChecked == true ? RegexOptions.IgnoreCase : RegexOptions.None;
@@ -41,7 +39,6 @@ namespace LazyNamed
             }
             this.ShowAcceptButton();
         }
-
 
         private void GetAllFileFromPath(string path)
         {
